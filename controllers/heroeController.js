@@ -6,3 +6,4 @@ const heroeController = {
     
 
     }
+module.exports = heroeController
