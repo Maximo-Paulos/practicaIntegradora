@@ -6,14 +6,9 @@ router.get('/', function(req, res, next) {
   res.send('heroes');
 });
 
-router.get('/detalle/id/:id', function(req, res, next){
-    res.send('detalle del heroe del id') + req.paramas.id
-})
+router.get('/detalle/id/:id', heroeController.detalle);
 
-
-router.get('/bio/id/:id/ok?', function(req, res, next){
-    res.send('bio del heroe') + req.params.id
-})
+router.get('/bio/id/:id/ok?',);
 
 
 
