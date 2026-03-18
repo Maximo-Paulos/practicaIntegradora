@@ -1,0 +1,60 @@
+Digital Science
+Introducción
+En esta oportunidad vamos a desarrollar un sitio web usando la tecnología de Express y el patrón de diseño MVC.
+El sitio mostrará la información de personalidades representativas de la ciencia y de la computación.
+Requisitos
+Trabajaremos en los grupos de proyecto integrador. 
+Leer TODO antes de comenzar. Sugerimos que lean en conjunto las consignas pues si bien entendemos la "ansiedad" por comenzar deben tener en mente todo el plan de trabajo y así poder dividir tareas.
+Objetivo
+El sitio web contará con las siguientes urls/ rutas:
+/
+/heroes
+/heroes/detalle/id/{id}  - ({id} = número, obligatorio)
+/heroes/bio/id/{id}/{ok} - ({id} = número, obligatorio / {ok} = string, optativo)
+/creditos
+¡Atención! Las anteriores deberán ser direcciones de acceso a la aplicación desde el navegador.
+Consignas
+Creá un proyecto nuevo usando express-generator. Recuerda elegir también el motor de vistas ejs dentro del comando de creación. 
+ Ayuda:  express-generator deja disponible el comando express. La sentencia para crear un proyecto con motor de vistas incluido es
+ 			express --view=ejs nombreDeMiProyecto
+Luego sigue los pasos que indica la consola para terminar la creación.
+Para chequear que el proyecto arranca correctamente y para no tener que estar reiniciándolo ante cambios en los archivos puedes usar el comando nodemon
+
+
+Para seguir con el standard de trabajo el código del proyecto deberá tener::
+Un sistema de ruteo modularizado por recurso.
+Un sistema de controladores que administren las peticiones del cliente.
+La estructura de directorios que recomendamos seguir será la siguiente:
+├── data
+│   └── science.js
+├── controllers
+│   ├── heroeController.js
+│   └── mainController.js
+├── routes
+│   ├── heroes.js
+│   └── main.js
+├── app.js
+└── package.json
+
+
+Creá un módulo propio que contenga la información del archivo  science.js (clickea aquí). Dentro del archivo encontrás un objeto literal completo con la información para el proyecto. Recordá colocarlo en una carpeta aparte (/data como sugiere la estructura de archivos del punto anterior) y revisar que tenga todo lo necesario para que se puedas requerir dentro de  los controladores que lo necesiten.
+
+
+
+A continuación se detallan las rutas y lo que deberá mostrar cada una al usuario en el navegador. Tenga en cuenta que aún no manejamos vistas por lo que la información que devolvamos al usuario se verá algo cruda en el navegador. 
+Home (/)
+Deberá mostrar el siguiente texto de bienvenida al sitio:
+“Aquí encontrarás algunos de los científicos y matemáticos destacados en el mundo de la ciencia y de la programación. Esperamos te sorprendas.”
+Héroes (/heroes)
+Deberá mostrar toda la información de la lista de personalidades.
+Héroes - Detalle (/heroes/detalle/id/{id})
+Mostrar un texto que diga: "Hola, mi nombre es NOMBRE y soy PROFESIÓN". En donde el NOMBRE y PROFESIÓN deberán ser reemplazados por la información proveniente del archivo science.js. 
+Ejemplo: /heroes/detalle/2 mostrará la información del héroe con id 2 .
+Tener en cuenta que el usuario puede indicar un número que no está en la lista. ¿Cómo podemos controlar este caso? Deberemos mostrar al usuario un aviso: “No encontramos al científico indicado. Por favor, elija otro id”.
+Héroes - Detalle con bio (/heroes/bio/id/{id}/{ok})
+Mostrar la información así:
+Si no se encontró la persona con ese id. El texto será: "No encontramos al científico indicado para mostrar su biografía". Mostrar la leyenda indistintamente si se envió o no el parámetro "ok".
+Si se encontró a la persona con ese id y NO vino exactamente la palabra ok o simplemente NO vino nada en la ruta: mostrar el nombre y un texto adicional que diga: "Lamento que no desees saber más de mi :(".
+Si se encontró a la persona con ese id y vino exactamente la palabra ok. Mostrar el nombre y su reseña.
+Créditos (/creditos)
+Mostrar los créditos del equipo (si, sus nombres) y cualquier texto adicional que deseen mostrar.
